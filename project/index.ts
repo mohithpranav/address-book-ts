@@ -108,4 +108,19 @@ class AddressBookSystem {
     this.addressBooks.set(name, new AddressBook(name));
     console.log(`Address book '${name}' created successfully.`);
   }
+
+  // UC8: Search person in a City or State across multiple Address Books
+  searchPersonByCityOrState(city: string, state: string): Contact[] {
+    const results: Contact[] = [];
+
+    for (const book of this.addressBooks.values()) {
+      for (const c of book.contacts) {
+        if (c.city === city || c.state === state) {
+          results.push(c);
+        }
+      }
+    }
+
+    return results;
+  }
 }
