@@ -68,4 +68,19 @@ class AddressBook {
     Object.assign(contact, updatedData);
     console.log("Contact updated successfully.");
   }
+
+  // UC4: Delete a contact from Address Book
+  deleteContact(firstName: string, lastName: string): void {
+    const index = this.contacts.findIndex(
+      (c) => c.firstName === firstName && c.lastName === lastName
+    );
+
+    if (index === -1) {
+      console.log("Contact not found.");
+      return;
+    }
+
+    this.contacts.splice(index, 1);
+    console.log("Contact deleted successfully.");
+  }
 }
