@@ -157,6 +157,15 @@ class AddressBook {
 
     fs.writeFileSync(filePath, header + rows);
   }
+
+  // UC15: Read or Write Address Book with Persons Contact as JSON File
+  exportToJSON(filePath: string): void {
+    fs.writeFileSync(filePath, JSON.stringify(this.contacts, null, 2));
+  }
+
+  importFromJSON(filePath: string): void {
+    this.readFromFile(filePath);
+  }
 }
 
 // UC6: Add multiple Address Books to the system
