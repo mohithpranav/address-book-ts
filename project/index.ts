@@ -160,4 +160,29 @@ class AddressBookSystem {
       people.forEach((p) => console.log(p.toString()));
     });
   }
+
+  // UC10: Get number of contact persons by City or State
+  countByCity(): void {
+    const cityCount = new Map<string, number>();
+
+    for (const book of this.addressBooks.values()) {
+      for (const c of book.contacts) {
+        cityCount.set(c.city, (cityCount.get(c.city) || 0) + 1);
+      }
+    }
+
+    console.log(Object.fromEntries(cityCount));
+  }
+
+  countByState(): void {
+    const stateCount = new Map<string, number>();
+
+    for (const book of this.addressBooks.values()) {
+      for (const c of book.contacts) {
+        stateCount.set(c.state, (stateCount.get(c.state) || 0) + 1);
+      }
+    }
+
+    console.log(Object.fromEntries(stateCount));
+  }
 }
