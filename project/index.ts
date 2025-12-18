@@ -45,7 +45,17 @@ class AddressBook {
     this.name = name;
   }
 
+  // UC7: Ensure no duplicate entry of the same person
   addContact(contact: Contact): void {
+    const exists = this.contacts.some(
+      (c) => c.fullName() === contact.fullName()
+    );
+
+    if (exists) {
+      console.log("Contact with this name already exists.");
+      return;
+    }
+
     this.contacts.push(contact);
     console.log("Contact added successfully.");
   }
