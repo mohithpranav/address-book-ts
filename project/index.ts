@@ -49,4 +49,23 @@ class AddressBook {
     this.contacts.push(contact);
     console.log("Contact added successfully.");
   }
+
+  // UC3: Edit existing contact details
+  editContact(
+    firstName: string,
+    lastName: string,
+    updatedData: Partial<Contact>
+  ): void {
+    const contact = this.contacts.find(
+      (c) => c.firstName === firstName && c.lastName === lastName
+    );
+
+    if (!contact) {
+      console.log("Contact not found.");
+      return;
+    }
+
+    Object.assign(contact, updatedData);
+    console.log("Contact updated successfully.");
+  }
 }
