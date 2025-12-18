@@ -144,6 +144,19 @@ class AddressBook {
         )
     );
   }
+
+  // UC14: Read or Write Address Book with Persons Contact as CSV File
+  writeToCSV(filePath: string): void {
+    const header = "FirstName,LastName,Address,City,State,Zip,Phone,Email\n";
+    const rows = this.contacts
+      .map(
+        (c) =>
+          `${c.firstName},${c.lastName},${c.address},${c.city},${c.state},${c.zipCode},${c.phone},${c.email}`
+      )
+      .join("\n");
+
+    fs.writeFileSync(filePath, header + rows);
+  }
 }
 
 // UC6: Add multiple Address Books to the system
