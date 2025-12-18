@@ -1,3 +1,5 @@
+import * as fs from "fs";
+
 console.log("Welcome to the Address Book Application!");
 
 // UC1: Create Contact class with person details
@@ -118,6 +120,29 @@ class AddressBook {
   sortByZip(): void {
     this.contacts.sort((a, b) => a.zipCode.localeCompare(b.zipCode));
     console.log("Contacts sorted by zip code.");
+  }
+
+  // UC13: Read or Write Address Book with Persons Contact into File
+  writeToFile(filePath: string): void {
+    fs.writeFileSync(filePath, JSON.stringify(this.contacts, null, 2));
+  }
+
+  readFromFile(filePath: string): void {
+    const data = fs.readFileSync(filePath, "utf-8");
+    const parsed = JSON.parse(data);
+    this.contacts = parsed.map(
+      (c: any) =>
+        new Contact(
+          c.firstName,
+          c.lastName,
+          c.address,
+          c.city,
+          c.state,
+          c.zipCode,
+          c.phone,
+          c.email
+        )
+    );
   }
 }
 
