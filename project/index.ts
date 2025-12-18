@@ -35,3 +35,18 @@ Email: ${this.email}
     `;
   }
 }
+
+// UC2: Add new Contact to Address Book
+class AddressBook {
+  name: string;
+  contacts: Contact[] = [];
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  addContact(contact: Contact): void {
+    this.contacts.push(contact);
+    console.log("Contact added successfully.");
+  }
+}
