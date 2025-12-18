@@ -84,3 +84,18 @@ class AddressBook {
     console.log("Contact deleted successfully.");
   }
 }
+
+// UC6: Add multiple Address Books to the system
+class AddressBookSystem {
+  addressBooks: Map<string, AddressBook> = new Map();
+
+  addAddressBook(name: string): void {
+    if (this.addressBooks.has(name)) {
+      console.log("Address book with this name already exists.");
+      return;
+    }
+
+    this.addressBooks.set(name, new AddressBook(name));
+    console.log(`Address book '${name}' created successfully.`);
+  }
+}
