@@ -103,6 +103,22 @@ class AddressBook {
     );
     console.log("Contacts sorted by name.");
   }
+
+  // UC12: Sort entries by City, State, or Zip
+  sortByCity(): void {
+    this.contacts.sort((a, b) => a.city.localeCompare(b.city));
+    console.log("Contacts sorted by city.");
+  }
+
+  sortByState(): void {
+    this.contacts.sort((a, b) => a.state.localeCompare(b.state));
+    console.log("Contacts sorted by state.");
+  }
+
+  sortByZip(): void {
+    this.contacts.sort((a, b) => a.zipCode.localeCompare(b.zipCode));
+    console.log("Contacts sorted by zip code.");
+  }
 }
 
 // UC6: Add multiple Address Books to the system
