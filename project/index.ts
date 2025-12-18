@@ -123,4 +123,41 @@ class AddressBookSystem {
 
     return results;
   }
+
+  // UC9: View Persons by City or State
+  viewByCity(): void {
+    const cityMap = new Map<string, Contact[]>();
+
+    for (const book of this.addressBooks.values()) {
+      for (const c of book.contacts) {
+        if (!cityMap.has(c.city)) {
+          cityMap.set(c.city, []);
+        }
+        cityMap.get(c.city)!.push(c);
+      }
+    }
+
+    cityMap.forEach((people, city) => {
+      console.log(`City: ${city}`);
+      people.forEach((p) => console.log(p.toString()));
+    });
+  }
+
+  viewByState(): void {
+    const stateMap = new Map<string, Contact[]>();
+
+    for (const book of this.addressBooks.values()) {
+      for (const c of book.contacts) {
+        if (!stateMap.has(c.state)) {
+          stateMap.set(c.state, []);
+        }
+        stateMap.get(c.state)!.push(c);
+      }
+    }
+
+    stateMap.forEach((people, state) => {
+      console.log(`State: ${state}`);
+      people.forEach((p) => console.log(p.toString()));
+    });
+  }
 }
