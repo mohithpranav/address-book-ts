@@ -93,6 +93,16 @@ class AddressBook {
     this.contacts.splice(index, 1);
     console.log("Contact deleted successfully.");
   }
+
+  // UC11: Sort entries in the address book by Person's name
+  sortByName(): void {
+    this.contacts.sort(
+      (a, b) =>
+        a.firstName.localeCompare(b.firstName) ||
+        a.lastName.localeCompare(b.lastName)
+    );
+    console.log("Contacts sorted by name.");
+  }
 }
 
 // UC6: Add multiple Address Books to the system
